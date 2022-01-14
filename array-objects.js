@@ -71,13 +71,27 @@ function bigOrSmall (arr){
 console.log(bigOrSmall([-2, 200, 50]))
 // Exercise 12. Make an object called me that contains the following keys: name, favoriteAnimal, favoriteNumber
 // The values of those keys can be whatever you choose.
+let me = {
+  name: 'Fariba',
+  favoriteAnimal: 'dog',
+  favoriteNumber: 8
+};
 
 // Exercise 13. Add another 2 keys and values to the object (you choose what they are)
+me.siblings = 2;
+me.petsNum = 2;
+console.log(me)
 
 // Exercise 14. Update the favoriteAnimal value to something different
-
+me.favoriteAnimal = 'butterfly';
 // Exercise 15. Print the value of favoriteAnimal.
+console.log('My favorite animal is' ,me.favoriteAnimal)
 // Note: there are at least 2 ways to get the value of a key, try to write both.
+console.log('Here we are using the dot (.) notation to get the value', me.petsNum)
+console.log(
+  'Here we are using the bracket notation to get the value',
+  me["petsNum"]
+);
 
 // Congrats, you made it to the end!
 // Did you find this easy or hard? If you used references, which ones helped you?
