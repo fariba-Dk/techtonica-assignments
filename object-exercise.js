@@ -1,11 +1,4 @@
-// BuyEPUB/PDF
 
-
-// Search
-
-// The JavaScript languageObjects: the basics
-// 12th December 2021
-// Objects
 // As we know from the chapter Data types, there are eight data types in JavaScript. Seven of them are called “primitive”, because their values contain only a single thing (be it a string or a number or whatever).
 
 // In contrast, objects are used to store keyed collections of various data and more complex entities. In JavaScript, objects penetrate almost every aspect of the language. So we must understand them first before going in-depth anywhere else.
@@ -405,40 +398,57 @@ delete user.name;
 // Check for emptiness
 // importance: 5
 // Write the function isEmpty(obj) which returns true if the object has no properties, false otherwise.
+function isEmpty(obj){
+  for (let key in obj){
+    if(key !== undefined) return true;
+  }
+  return false;
+}
 
-// Should work like that:
+let schedule = {};
+console.log(isEmpty(schedule)); // true
+schedule["8:30"] = "get up";// there is a key value pair
+console.log(isEmpty(schedule) ); // false
 
-// let schedule = {};
-
-// alert( isEmpty(schedule) ); // true
-
-// schedule["8:30"] = "get up";
-
-// alert( isEmpty(schedule) ); // false
-// Open a sandbox with tests.
-
-// solution
 // Sum object properties
 // importance: 5
 // We have an object storing salaries of our team:
 
-// let salaries = {
-//   John: 100,
-//   Ann: 160,
-//   Pete: 130
-// }
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130
+}
 // Write the code to sum all salaries and store in the variable sum. Should be 390 in the example above.
+function sumsVal(obj){
+  //edge case: If salaries is empty, then the result must be 0.
+  if(Object.keys(obj).length === 0) return 0;
+  let sum = 0;
+  for (let key in obj) {
+    sum += obj[key];
+  }
+  return sum;
+}
 
-// If salaries is empty, then the result must be 0.
 
-// solution
 // Multiply numeric property values by 2
 // importance: 3
 // Create a function multiplyNumeric(obj) that multiplies all numeric property values of obj by 2.
 
-// For instance:
+function multiplyNumeric(obj) {
+  //no edge case
+  let newMenu = {};
+  for (let key in obj) {
+    if (typeof obj[key] == 'number') {//if value is a num => multiply by 2
+      newMenu[key] = obj[key] * 2;
+    } else { //else if value is  not a num dont do anything just return value as is
+      newMenu[key] = obj[key];
+    }
+  }
+  return newMenu;
+}
+console.log(multiplyNumeric(menu));
 
-// // before the call
 let menu = {
   width: 200,
   height: 300,

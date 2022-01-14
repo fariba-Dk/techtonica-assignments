@@ -31,8 +31,10 @@ console.log(animals[0]);
 // Exercise 7. Print the last item in the array (as part of your answer, use the same array property you used in exercise 5 above)
 console.log(animals[animals.length - 1]);
 // Exercise 8. Remove the last item from the array
+console.log(animals.slice(0, animals.length - 1))
 
 // Exercise 9. Now make a new array named assortedThings that contains at least 3 strings and 3 numbers.
+let assortedThings = ['hi',' rat','ice', 5, 4, 0]
 
 // Exercise 10. Write a for loop that iterates through the assortedThings array and prints each index and item, such as:
 // Item #0 is potato
@@ -40,6 +42,9 @@ console.log(animals[animals.length - 1]);
 // Item #2 is Hello World
 // ...
 
+for( let i = 0; i < assortedThings.length; i++){
+  console.log('Item #', i, 'is ' + 'assortedThings[i]');
+}
 // Exercise 11. Write a function that takes an array of numbers as a parameter. For each number in the array,
 // print the number and "BIG" if it's over 100, "small" if it's between 0 and 100, and "negative" if
 // it's less than 0. Example:
@@ -50,6 +55,20 @@ console.log(animals[animals.length - 1]);
 //
 // Then write some function calls you would use to test your function.
 
+function bigOrSmall (arr){
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i] < 0 ) {
+      console.log(arr[i] + ' negative')
+  }else if(arr[i] > 100 ){
+    console.log(arr[i] + ' BIG')
+  }else{
+    console.log(arr[i] + ' small')
+  }
+
+}
+  return;
+}
+console.log(bigOrSmall([-2, 200, 50]))
 // Exercise 12. Make an object called me that contains the following keys: name, favoriteAnimal, favoriteNumber
 // The values of those keys can be whatever you choose.
 
