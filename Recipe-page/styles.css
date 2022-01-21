@@ -1,22 +1,21 @@
-#article{
+#article {
   margin: 100px;
-  margin-top:0px;
+  margin-top: 0px;
 }
 .recipe {
   overflow: hidden;
   position: relative;
   color: rgb(59, 23, 40);
-
 }
 .dish-name {
-  font-size: 60px;
+  font-size: 50px;
   text-align: center;
-  color:red;
+  color: red;
 }
 
 .bg-pic {
   opacity: 60%;
-  position:absolute;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
@@ -26,32 +25,30 @@
 }
 
 #p {
-  font-size: 25px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
 }
 .p1 {
-  font-size: 25px;
+  font-size: 20px;
 }
 .p2 {
-  font-size: 25px;
+  font-size: 20px;
 }
 .ingredients {
-  font-size: 25px;
+  font-size: 20px;
 }
-.prep{
-  font-size:25px;
+.prep {
+  font-size: 20px;
   margin-left: 200px;
-  margin-bottom:0;
-
-
-
+  margin-bottom: 0;
 }
 .links {
   color: #1a6445;
-  font-size:25px;
+  font-size: 25px;
 }
 #prep {
-  font-size: 25px;
-  text-align: right;
+  margin:400px;
+  font-size: 20px;
+  text-align:center;
 }
