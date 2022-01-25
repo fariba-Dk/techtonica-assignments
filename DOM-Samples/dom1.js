@@ -1,35 +1,45 @@
 let cc = console.log;
 cc('This is the Sanity test! Yay ~~~~~~~~~~~~~~~~~~~!');
 
-/* JavaScript DOM Exercises 01 Tutorial: https://youtu.be/EHF7xBUAmrQ */
-//let body = null;
-/*
+/* ~~~~~~~~~~~~~~~~~ S P L I T  ~~~~~~~~~~~~~~~~~~~~~~`
+  ex 1: let message = 'I am a Happy Go lucky Guy';
+  console.log(message.split(' ', 4)); // ["I", "am", "a", "Happy"]
+  ex 2: document.body.innerText.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
 
-  Exercise 01
-  -----------
-  Highlight all of the words over 8 characters long in the paragraph text (with a yellow background for example)
+  ex 3: let message = 'The sky is blue. Grass is green! Do you know the color of the Cloud?';
 */
-if (typeof document !== 'undefined') {
-  // during server evaluation
-  const fiveLong = window.document.querySelector('p')
 
-    //take the element that is inside the tag
-    fiveLong.innerHTML = fiveLong.innerText;
-    fiveLong.innerText.split(' ') //split in to an array
-    //map thru to see if the length is over 8
-    .map(word => word.length > 8 ? `<span "style:"background-color: yellow">${word}</span>` : word).join(' ')
-    //     : console.log('No words smaller that  letters').join(' ')
-    // ); //inline style5}
-    }else{
-  cc('~~~~~~~~~~~~~ Do Nothing~~~~~~~~~~~~~')
-    }
+if(typeof document !== "undefined"){
 
-/*
-  Exercise 02
-  -----------
-  Add a link back to the source of the text after the paragraph tag.
-  (https://forcemipsum.com/)
-*/
+  const paragraph = window.document.querySelector('p')
+  paragraph.innerHTML = paragraph.innerText
+    .split(/[.,!,' ',?]/)
+    //.split(' ')
+    .map((word) =>
+      word.length >= 6
+        ? `<span style="background-color:yellow">${word}</span>`
+        : word
+    )
+    .join(' ');
+  }else{
+  cc('This is not working')
+}
+
+
+  /*
+    Exercise 02
+    -----------
+    Add a link back to the source of the text after the paragraph tag.
+    (https://forcemipsum.com/)
+  */
+  // create an elm 'a'
+  // add href to it
+  // add a body to it that reads the link
+  // append it to the document
+  // let link = document.createElement('a');
+  // link.href = "https://www.youtube.com/watch?v=EHF7xBUAmrQ";
+  // link.innerText ="************ here! ***********"
+  // document.body.appendChild(link)
 
 /*
   Exercise 03
@@ -37,6 +47,8 @@ if (typeof document !== 'undefined') {
   Split each new sentence on to a separate line in the paragraph text.
   A sentence can be assumed to be a string of text terminated with a period (.)
 */
+
+
 
 /*
   Exercise 04
