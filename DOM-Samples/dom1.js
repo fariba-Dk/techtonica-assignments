@@ -62,3 +62,16 @@ if(typeof document !== "undefined"){
   -----------
   Replace all question marks (?) with thinking faces (🤔) and exclamation marks (!) with astonished faces (😲)
 */
+// Create a function called "diffArray" that takes two arrays to compare and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
+
+// Note: You can return the array with its elements in any order.
+
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5, 1, 6];
+// const arr3 = [7, 8, 9, 6];
+
+// const numbers = arr1.concat(arr2, arr3);
+
+// console.log(numbers);
+
+
