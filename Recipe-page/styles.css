@@ -1,31 +1,36 @@
-#article {
-  margin: 100px;
-  margin-top: 0px;
+*{
+  margin: 20px;
+  padding: 0;
 }
-.recipe {
-  overflow: hidden;
-  position: relative;
-  color: rgb(59, 23, 40);
-}
+
 .dish-name {
-  font-size: 50px;
-  text-align: center;
+  font-size: 30px;
+  text-align: left;
   color: red;
 }
-
-.bg-pic {
-  opacity: 60%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: auto;
-  min-width: 1024px;
-  min-height: 100%;
+.button{
+  color: red;
+  font-size:large;
 }
+.thumb_img{
+  width: 30px;
+  height: 30px;
+}
+.bg-pic {
+  width: 30%;
+  height: 30%;
+}
+.img{
+padding:0;
+margin:0;
+width:50;
+height:50;
+}
+/* 1 rem = 16 px   default here: 1.5 rem = 24 */
 
 #p {
-  font-size: 20px;
+
+  font-size: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -48,7 +53,26 @@
   font-size: 25px;
 }
 #prep {
-  margin:400px;
+  margin: 400px;
   font-size: 20px;
-  text-align:center;
+  text-align: center;
 }
+@media all and (min-width: 690px) {
+/* Mobile: under 700 px => increase font 00111e*/
+.p2 {
+  font-size: 20px;
+}
+
+}
+
+@media (min-width: 990px){
+/* Tablets: font with media for tablet width of 688 px or grater makes the font-size bigger and override size*/
+
+
+}
+@media(min-width: 1390){
+    /*  Mobile alternate font with media for tablet width of 688 px or grater makes the font-size bigger and override size*/
+
+  }
+
+d

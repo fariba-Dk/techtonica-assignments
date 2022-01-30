@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500');
+/* styles to override everything */
+
+body {
+  background-color:rgb(185, 209, 230);
+  margin:0;
+}
+.menu {
+  width: 100%;
+  overflow:auto;
+  margin: 30px;
+  padding: 10px;
+}
+.menu ul{
+  margin: 0;
+  padding: 0;
+  list-style:none;
+  line-height: 60px;
+}
+.menu li{
+  float:left;
+}
+.menu ul li a{
+  background-color:rgb(66, 177, 134);
+  text-decoration: none;
+  width: 130px;
+  display: block;
+  text-align: center;
+  color:white;
+  font-size: 20px;
+   font-family: 'Montserrat', sans-serif;
+   letter-spacing:0.5px;
+
+}
+.menu li a:hover{
+  background-color:  rgb(107, 9, 107);;
+  font-size:x-large;
+}
+
+button {
+  color:white;
+  margin-left: 20px;
+  padding: 9px 25px;
+  background-color:#41B186;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-family: 'Montserrat', sans-serif;
+  font-size:x-large;
+
+}
+button:hover {
+  background-color: rgb(107, 9, 107);
+}
+
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+.search {
+  cursor: pointer;
+  margin-right: auto;
+}
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+.nav-links li a {
+  transition: all 0.3s ease 0s;
+}
+.nav-links li a:hover {
+  color: aqua;
+}
+
+@media (max-width: 1400px) {
+  body {
+    background-color: lightblue;
+  }
+  .button{
+    background-color: black;
+
+  }
+}
