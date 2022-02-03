@@ -1,3 +1,7 @@
-#show-contact {
-  display: none;
+body{
+  background-color:rgb(248, 241, 231);
+}
+.dollar{
+  width: 100px;
+  height:100px;
 }

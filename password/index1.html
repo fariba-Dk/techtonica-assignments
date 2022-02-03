@@ -1,0 +1,34 @@
+// Sample code to console.log the fist inptu of password. Try tiping something in the first field
+
+document.getElementById("password1").addEventListener("input", e => {
+  const firstPassword = e.target.value;
+  console.log(firstPassword);
+});
+document.getElementById("password2").addEventListener("input", e => {
+  let passTwo = e.target.value;
+  console.log(passTwo);
+});
+
+
+// Validate password length
+document.getElementById("password1").addEventListener("input", e => {
+  const firstPassword = e.target.value; // Value of the password field
+  let passwordLength = "too short";
+  let messageColor = "red"; // Short password => red
+  if (password.length >= 5) {
+    passwordLength = "adequate";
+    messageColor = "green"; // Long password => green
+  } else if (firstPassword.length >= 4) {
+    passwordLength = "moderate";
+    messageColor = "orange"; // Moderate password => orange
+  }
+  if(passTwo !== firstPassword){
+  console.log('not matching')
+}
+  const passwordHelpElement = document.getElementById("passwordHelp");
+  passwordHelpElement.textContent = `Length: ${passwordLength}`; // helper text
+  passwordHelpElement.style.color = messageColor; // helper text color
+});
+
+
+
