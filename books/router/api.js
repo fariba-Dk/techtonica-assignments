@@ -3,7 +3,7 @@ const books = require('./book-data');
 
 let bookArr = books; //instance of books
 
-//--> routes here localhost:3005/api/v1/books
+//--> routes here localhost:3007/api/v1/books
 //GET
 router.get('/books', (req, res) => {
   //req obj or res obj
@@ -40,7 +40,7 @@ router.post('/books', (req, res) => {
 
   if (bookExist) return res.send('Book Already Exists!!');
 
-  //if book does not exists then we add newbook with these properties
+  /*if book does not exists then we add newbook with these properties*/
   const newBook = {
     title,
     isbn,
