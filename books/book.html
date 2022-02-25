@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/index.js" defer></script>
-    <link href="/public/style.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
 
   </head>
   <body>
@@ -14,7 +14,7 @@
       <h1 class="h1">🔖 Books-R-Us🔖</h1>
     </nav>
     <div class="content">
-      <h2 tex-align="center">Create Your Favorite Book Here  ⏬ </h2>
+      <h2 tex-align="center">Create Your Library Here  ⏬ </h2>
       <hr/>
       <img src="https://assets.ltkcontent.com/images/31018/book-genres_0066f46bde.jpg" rel="genre pics">
       <!-- body -->
@@ -22,24 +22,30 @@
 
       </div>
       <hr>
-
         <form action="http://localhost:3005/book" method="POST">
           <label>Title</label>
           <input type="text" placeholder="Enter Book" />
-          <button type="submit">click</button>
+
         </form>
-        <hr>
+
+        <form action="http://localhost:3005/book" method="POST">
+          <label>Book id</label>
+          <input type="text" placeholder="Enter id" />
+
+        </form>
+
         <form>
           <label>Author</label>
           <input type="text" placeholder="Enter Author" />
-          <button type="submit">click</button>
+
         </form>
-        <hr>
+
         <form>
           <label>Publisher</label>
           <input type="text" placeholder="Enter Publisher" />
           <button class="submit" type="submit">click</button>
         </form>
+
         <form>
           <label>Genre</label>
           <select>
@@ -49,6 +55,8 @@
             <option value="comedy">Novel</option>
             <option value="comedy">Science Fiction</option>
             <option value="comedy">SiFi</option>
+            <button class="submit" type="submit">click</button>
+
 
           </select>
           <button class="submit" type="submit">click</button>
