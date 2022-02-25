@@ -98,8 +98,19 @@ router.put('/books/:id', (req, res) => {
   /* we update using bookIndex and splice() ~~~ splice(start: number, deleteCount?: number):
    */
   bookArr.splice(bookIndex, 1, updatedBook);
+  res.send(updatedBook);
 });
 
-//router.put('/books/:id', (req, res) => {});
+// DELETE
+router.delete('/books/:id', (req, res) => {
+  const { id } = req.params;
+  const bookToBeDeleted = bookArr.find((b) => b.isbn === id);
+
+  if (!bookToBeDeleted)
+    return res.status(404).res.send('This Book does not exist');
+  /* use filter to find and remove the book */
+  bookArr.filter((b) => b.isbn !== id); //we return the book without this id
+  res.send('Successfully Deleted!');
+});
 
 module.exports = router;
