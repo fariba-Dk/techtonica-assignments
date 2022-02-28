@@ -1,0 +1,103 @@
+index.html
+about.html
+contactme.html
+404.html
+Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.
+​
+localhost:8080 should take users to index.html
+​
+localhost:8080/about should take users to about.html
+​
+localhost:8080/contactme should take users to contact-me.html
+​
+404.html should display any time the user tries to go to a page not listed above.
+​
+Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty.
+​
+
+You need to use express to do this exercise. So, please do this locally and add it to your Assessments folder on Github and submit it with a PR
+
+Task
+Make a project directory and create the following files inside that directory:
+
+index.html about.html contactme.html 404.html
+
+Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.
+
+localhost:8080 should take users to index.html
+
+localhost:8080/about should take users to about.html
+
+localhost:8080/contactme should take users to contact-me.html
+
+404.html should display any time the user tries to go to a page not listed above.
+
+Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty.
+
+Preview of README.md SetUp You need to use express to do this exercise. So, please do this locally and add it to your Assessments folder on Github and submit it with a PR
+
+Task Make a project directory and create the following files inside that directory:
+
+index.html about.html contactme.html 404.html
+
+Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.
+
+localhost:8080 should take users to index.html
+
+localhost:8080/about should take users to about.html
+
+localhost:8080/contactme should take users to contact-me.html
+
+404.html should display any time the user tries to go to a page not listed above.
+
+Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty.
+
+Techtonica2020H / Week 6 / Friday / KC-Week6-FaribaDK1 Markdown (Barebones)
+
+Resubmit
+
+Files
+
+CPU RAM Storage
+
+Preview 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 ⌄ ⌄ ⌄ ⌄
+
+SetUp
+You need to use express to do this exercise. So, please do this locally and add it to your Assessments folder on Github and submit it with a PR​
+
+Task
+​Make a project directory and create the following files inside that directory:​index.html about.html contactme.html 404.html​Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.​localhost:8080 should take users to index.html​localhost:8080/about should take users to about.html​localhost:8080/contactme should take users to contact-me.html​404.html should display any time the user tries to go to a page not listed above.​Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty.​Preview of README.md SetUp You need to use express to do this exercise. So, please do this locally and add it to your Assessments folder on Github and submit it with a PR​Task Make a project directory and create the following files inside that directory:​index.html about.html contactme.html 404.html​Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.​localhost:8080 should take users to index.html​localhost:8080/about should take users to about.html​localhost:8080/contactme should take users to contact-me.html​404.html should display any time the user tries to go to a page not listed above.​Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty. Preview of README.md SetUp You need to use express to do this exercise. So, please do this locally and add it to your Assessments folder on Github and submit it with a PR
+
+Task Make a project directory and create the following files inside that directory:
+
+index.html about.html contactme.html 404.html
+
+Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.
+
+localhost:8080 should take users to index.html
+
+localhost:8080/about should take users to about.html
+
+localhost:8080/contactme should take users to contact-me.html
+
+404.html should display any time the user tries to go to a page not listed above.
+
+Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty.
+
+Preview of README.md SetUp You need to use express to do this exercise. So, please do this locally and add it to your Assessments folder on Github and submit it with a PR
+
+Task Make a project directory and create the following files inside that directory:
+
+index.html about.html contactme.html 404.html
+
+Create your "node.js" server file index.js and add the code needed to serve the right page according to the url.
+
+localhost:8080 should take users to index.html
+
+localhost:8080/about should take users to about.html
+
+localhost:8080/contactme should take users to contact-me.html
+
+404.html should display any time the user tries to go to a page not listed above.
+
+Also, keep in mind that the content of these pages isn’t really all that important. So there’s no need to spend a lot of time filling them up or trying to make them look pretty.
