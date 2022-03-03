@@ -1,4 +1,17 @@
 # Getting Started with Create React App
+The weather app must have all the basic functions, including city name,
+current weather icon,
+temperature,
+humidity,
+wind speed,
+It must display apt images for sunny/rainy/cloudy/snowy weather conditions.
+It should have a responsive design.
+
+
+While developing this weather app, you will learn how to connect to an external API and display the appropriate results. ﻿We recommend that you use OpenWeather API ﻿https://openweathermap.org/api﻿﻿
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
