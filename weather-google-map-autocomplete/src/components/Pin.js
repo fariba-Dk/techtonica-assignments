@@ -37,12 +37,12 @@ const center = {
   lng: -122.4194,
 };
 
-export default function Pin() {
+export default function Pin({ markers, setMarkers }) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const [markers, setMarkers] = React.useState([]);
+
   const [selected, setSelected] = React.useState(null);
 
   const onMapClick = React.useCallback((e) => {
@@ -71,7 +71,6 @@ export default function Pin() {
 
   return (
     <div>
-    
       <Search panTo={panTo} />
 
       <GoogleMap
@@ -90,7 +89,6 @@ export default function Pin() {
             onClick={() => {
               setSelected(marker);
             }}
-
           />
         ))}
 

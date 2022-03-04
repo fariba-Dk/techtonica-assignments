@@ -2,13 +2,14 @@ import React, { useState, useCallback } from 'react';
 import Weather from './components/Weather.js';
 import Pin from './components/Pin';
 import AutoComplete from 'places-autocomplete-react';
-import "./index.css";
+import './index.css';
 import Icon from './components/Icon';
-
 
 export default function App() {
   const [address, setAddress] = useState({});
   //when component is loads
+
+  const [markers, setMarkers] = React.useState([]); //making state global
 
   const correct = useCallback(
     (strAddress) => {
@@ -21,22 +22,21 @@ export default function App() {
   );
   return (
     <>
-      <div className="App">
-        <div className="weatherContainer p3-3 pb-3">
-          <Weather day={'Mon'} icon={'Sun'} temp={32}/>
-          <Weather day={'Tue'} icon={'Mistake'} temp={33}/>
-          <Weather day={'Wed'} icon={'Snowing'} temp={32}/>
-          <Weather day={'Thu'} icon={'Rain'} temp={35}/>
-          <Weather day={'Fri'} icon={'Sun'} temp={15}/>
-          <Weather day={'Sat'} icon={'Cloud'} temp={30}/>
+      <div className='App'>
+        <div className='weatherContainer p3-3 pb-3'>
+          <Weather day={'Mon'} icon={'Sun'} temp={32} />
+          <Weather day={'Tue'} icon={'Mistake'} temp={33} />
+          <Weather day={'Wed'} icon={'Snowing'} temp={32} />
+          <Weather day={'Thu'} icon={'Rain'} temp={35} />
+          <Weather day={'Fri'} icon={'Sun'} temp={15} />
+          <Weather day={'Sat'} icon={'Cloud'} temp={30} />
           <Weather day={'Sun'} icon={'Partial'} temp={34} />
-
         </div>
 
-        <Weather className="weather"/>
+        <Weather markers={markers} />
       </div>
       <div>
-        <Pin />
+        <Pin markers={markers} setMarkers={setMarkers} />
       </div>
     </>
   );

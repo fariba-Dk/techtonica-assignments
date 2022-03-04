@@ -5,6 +5,10 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import Temp from '../components/Temp';
 import Days from '../components/Days';
 import Icon from '../components/Icon';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 const MyURL =
   'http://api.openweathermap.org/data/2.5/forecast?lat=37.7749&lon=-122.4194&appid=0e94ff0e87c051d7531693a200fce67d&units=metric';
@@ -43,7 +47,7 @@ const dateBuilder = (d) => {
   return `${day} ${date} ${month} ${year}`;
 };
 const libraries = ['places'];
-export default function Weather({ props }) {
+export default function Weather(props) {
   //ALL THE HOOKS
   // const { isLoaded, loadError } = useLoadScript({MyURL
   // ,
@@ -93,12 +97,12 @@ setCity( event.target.value );
   );
 }
  */
-  async function fetchWeather() {
+  async function fetchWeather(latitude, longitude) {
     try {
       //lets get our location:
-      await window.navigator.geolocation.getCurrentPosition(
-        savePositionToState
-      );
+      // await window.navigator.geolocation.getCurrentPosition(
+      //   savePositionToState
+      // );
 
       const response = await axios.get(
         `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=0e94ff0e87c051d7531693a200fce67d&units=metric`
@@ -106,20 +110,21 @@ setCity( event.target.value );
       console.log(response);
 
       //get temp from response body
-      setTemp(response.data.main.temp);
+      setTemp(response.data.list[0].main.temp);
       console.log(response.data);
       //get city from data
-      setCity(response.data.name);
-      setWeather(response.data.weather[0].main);
-      setHumidity(response.data.main.humidity);
+      setCity(response.data.city.name);
+      setWeather(response.data.list[0].weather[0].description);
+      setHumidity(response.data.list[0].main.humidity);
     } catch (error) {
       console.error(error);
     }
   }
   //useEf runs only once
+  const { markers } = props;
   useEffect(() => {
-    fetchWeather(city);
-  }, []);
+    if (markers && markers[0]) fetchWeather(markers[0].lat, markers[0].lng);
+  }, [markers]);
 
   //------------- Return here
   // if (loadError) return 'Error';
@@ -151,6 +156,9 @@ setCity( event.target.value );
             <h2>City: {city}</h2>
           </form>
           <div>
+            {props.markers && props.markers[0]
+              ? `${props.markers[0].lat}, ${props.markers[0].lng}`
+              : null}
             <h2>City: {city}</h2>
             <h2>Temperature: {temp}ºC</h2>
 

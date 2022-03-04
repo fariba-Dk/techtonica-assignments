@@ -8,22 +8,27 @@ export default function Icon(props) {
   {
     switch (props.icon) {
       case 'Cloudy':
-        return <FontAwesomeIcon icon='fa-solid fa-sun-cloud' />;
+        return <FontAwesomeIcon icon='fa-sun-cloud' />;
         break;
       case 'Sunny':
-        return <FontAwesomeIcon icon='fa-solid fa-sun' />;
+        return <FontAwesomeIcon icon='fa-sun' />;
         break;
       case 'Rainy':
-        return <FontAwesomeIcon icon='fa-solid fa-cloud-moon-rain' />;
+        return <FontAwesomeIcon icon='fa-cloud-moon-rain' />;
         break;
       case 'Snowing':
-        return <FontAwesomeIcon icon='fa-solid fa-snowflake' />;
+        return <FontAwesomeIcon icon='fa-snowflake' />;
         break;
       case 'Partial':
-        return <FontAwesomeIcon icon='fa-solid fa-sun-cloud' />;
+        return <FontAwesomeIcon icon='fa-sun-cloud' />;
         break;
       default:
-        return <FontAwesomeIcon icon='fa-solid fa-sun-cloud' />;
+        return <FontAwesomeIcon icon='fa-sun-cloud' />;
     }
-  }
+  }//   return <FontAwesomeIcon icon='fa-sun-cloud' />;
+
+
+
+
+
 }
