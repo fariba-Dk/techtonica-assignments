@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   GoogleMap,
   useLoadScript,
@@ -31,9 +31,10 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
+////37.7749° N, 122.4194° W
 const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+  lat: 37.7749,
+  lng: -122.4194,
 };
 
 export default function Pin() {
@@ -62,7 +63,7 @@ export default function Pin() {
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(13);
+    mapRef.current.setZoom(10);
   }, []);
 
   if (loadError) return 'Error';
@@ -70,21 +71,13 @@ export default function Pin() {
 
   return (
     <div>
-      <h1>
-      <span role='img' aria-label='tent'>
-          🌈 🌦  ☀️
-        </span>
-        Search YOUR City Forecast{' '}
-        <span role='img' aria-label='tent'>
-           🌤  🌞
-        </span>
-      </h1>
+    
       <Search panTo={panTo} />
 
       <GoogleMap
         id='map'
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={12}
         center={center}
         options={options}
         onClick={onMapClick}
@@ -97,12 +90,7 @@ export default function Pin() {
             onClick={() => {
               setSelected(marker);
             }}
-            icon={{
-              url: `/bear.svg`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
+
           />
         ))}
 
@@ -116,11 +104,11 @@ export default function Pin() {
             <div>
               <h2>
                 <span role='img' aria-label='bear'>
-                  🐻
+                  📍
                 </span>{' '}
-                Alert
+                You are Here!
               </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
+              <p>Weather is {formatRelative(selected.time, new Date())}</p>
             </div>
           </InfoWindow>
         ) : null}
@@ -190,7 +178,6 @@ function Search({ panTo }) {
 // const [city, setCity] = useState('')
 
 /*including city name,import React from "react";
-
 export default ({ weatherData, error }) => {
   if (error) {
     return (
@@ -206,7 +193,6 @@ export default ({ weatherData, error }) => {
       </div>
     );
   }
-
   if (Object.keys(weatherData).length === 0) {
     return (
       <div
@@ -221,10 +207,8 @@ export default ({ weatherData, error }) => {
       </div>
     );
   }
-
   const weather = weatherData.weather[0];
   const { main, wind } = weatherData;
-
   //Function to change from K to ºC
   const KtoC = number => {
     if ((number - 273.15) % 1 === 0) {
@@ -232,7 +216,6 @@ export default ({ weatherData, error }) => {
     }
     return Number(number - 273.15).toFixed(2);
   };
-
   return (
     <div>
       <div
@@ -263,7 +246,6 @@ export default ({ weatherData, error }) => {
               }}
             />
           </div>
-
           <h1 className="currentWeather">{weather.main}</h1>
         </div>
         <div style={{ textAlign: "right" }}>
