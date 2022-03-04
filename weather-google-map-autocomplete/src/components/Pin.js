@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import {
   GoogleMap,
   useLoadScript,
@@ -19,15 +19,15 @@ import {
 import { formatRelative } from 'date-fns';
 
 import '@reach/combobox/styles.css';
-import mapStyles from './mapStyles';
+// import mapStyles from './mapStyles';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  height: '100vh',
+  height: '50vh',
   width: '100vw',
 };
 const options = {
-  styles: mapStyles,
+  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
@@ -36,7 +36,7 @@ const center = {
   lng: -79.3832,
 };
 
-export default function App() {
+export default function Pin() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -54,7 +54,7 @@ export default function App() {
       },
     ]);
   }, []);
-
+  //useRef, useCallback, useLoadScript
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
@@ -62,7 +62,7 @@ export default function App() {
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
+    mapRef.current.setZoom(13);
   }, []);
 
   if (loadError) return 'Error';
@@ -71,13 +71,14 @@ export default function App() {
   return (
     <div>
       <h1>
-        Bears{' '}
+      <span role='img' aria-label='tent'>
+          🌈 🌦  ☀️
+        </span>
+        Search YOUR City Forecast{' '}
         <span role='img' aria-label='tent'>
-          ⛺️
+           🌤  🌞
         </span>
       </h1>
-
-      <Locate panTo={panTo} />
       <Search panTo={panTo} />
 
       <GoogleMap
@@ -125,27 +126,6 @@ export default function App() {
         ) : null}
       </GoogleMap>
     </div>
-  );
-}
-
-function Locate({ panTo }) {
-  return (
-    <button
-      className='locate'
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null
-        );
-      }}
-    >
-      <img src='/compass.svg' alt='compass' />
-    </button>
   );
 }
 
