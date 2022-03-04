@@ -43,7 +43,7 @@ const dateBuilder = (d) => {
   return `${day} ${date} ${month} ${year}`;
 };
 const libraries = ['places'];
-export default function Weather({ props }) {
+export default function Weather(props) {
   //ALL THE HOOKS
   // const { isLoaded, loadError } = useLoadScript({MyURL
   // ,
@@ -103,7 +103,6 @@ setCity( event.target.value );
       const response = await axios.get(
         `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=0e94ff0e87c051d7531693a200fce67d&units=metric`
       );
-      console.log(response);
 
       //get temp from response body
       setTemp(response.data.main.temp);
