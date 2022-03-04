@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export default function Weather() {
@@ -17,9 +18,3 @@ export default function Weather() {
     </div>
   );
 }
-/*including city name,
-current weather icon,
-temperature,
-humidity,
-wind speed,
-It must display apt images for sunny/rainy/cloudy/snowy weather conditions. */

@@ -1,30 +1,30 @@
-import React from "react";
+import React from 'react';
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
-} from "@react-google-maps/api";
+} from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
-} from "use-places-autocomplete";
+} from 'use-places-autocomplete';
 import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-} from "@reach/combobox";
-import { formatRelative } from "date-fns";
+} from '@reach/combobox';
+import { formatRelative } from 'date-fns';
 
-import "@reach/combobox/styles.css";
-import mapStyles from "./mapStyles";
+import '@reach/combobox/styles.css';
+import mapStyles from './mapStyles';
 
-const libraries = ["places"];
+const libraries = ['places'];
 const mapContainerStyle = {
-  height: "100vh",
-  width: "100vw",
+  height: '100vh',
+  width: '100vw',
 };
 const options = {
   styles: mapStyles,
@@ -65,14 +65,14 @@ export default function App() {
     mapRef.current.setZoom(14);
   }, []);
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  if (loadError) return 'Error';
+  if (!isLoaded) return 'Loading...';
 
   return (
     <div>
       <h1>
-        Bears{" "}
-        <span role="img" aria-label="tent">
+        Bears{' '}
+        <span role='img' aria-label='tent'>
           ⛺️
         </span>
       </h1>
@@ -81,7 +81,7 @@ export default function App() {
       <Search panTo={panTo} />
 
       <GoogleMap
-        id="map"
+        id='map'
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
@@ -114,9 +114,9 @@ export default function App() {
           >
             <div>
               <h2>
-                <span role="img" aria-label="bear">
+                <span role='img' aria-label='bear'>
                   🐻
-                </span>{" "}
+                </span>{' '}
                 Alert
               </h2>
               <p>Spotted {formatRelative(selected.time, new Date())}</p>
@@ -131,7 +131,7 @@ export default function App() {
 function Locate({ panTo }) {
   return (
     <button
-      className="locate"
+      className='locate'
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -144,7 +144,7 @@ function Locate({ panTo }) {
         );
       }}
     >
-      <img src="/compass.svg" alt="compass" />
+      <img src='/compass.svg' alt='compass' />
     </button>
   );
 }
@@ -178,22 +178,22 @@ function Search({ panTo }) {
       const { lat, lng } = await getLatLng(results[0]);
       panTo({ lat, lng });
     } catch (error) {
-      console.log("😱 Error: ", error);
+      console.log('😱 Error: ', error);
     }
   };
 
   return (
-    <div className="search">
+    <div className='search'>
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Search your location"
+          placeholder='Search your location'
         />
         <ComboboxPopover>
           <ComboboxList>
-            {status === "OK" &&
+            {status === 'OK' &&
               data.map(({ id, description }) => (
                 <ComboboxOption key={id} value={description} />
               ))}
@@ -203,3 +203,125 @@ function Search({ panTo }) {
     </div>
   );
 }
+///////
+
+//ALL THE HOOKS
+// const [temp, setTemp]= useState('');
+// const [city, setCity] = useState('')
+
+/*including city name,import React from "react";
+
+export default ({ weatherData, error }) => {
+  if (error) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          fontFamily: "Raleway",
+          padding: 20,
+          color: "gray"
+        }}
+      >
+        {error}
+      </div>
+    );
+  }
+
+  if (Object.keys(weatherData).length === 0) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          fontFamily: "Raleway",
+          padding: 20,
+          color: "gray"
+        }}
+      >
+        You haven't selected a place, please select one
+      </div>
+    );
+  }
+
+  const weather = weatherData.weather[0];
+  const { main, wind } = weatherData;
+
+  //Function to change from K to ºC
+  const KtoC = number => {
+    if ((number - 273.15) % 1 === 0) {
+      return number - 273.15;
+    }
+    return Number(number - 273.15).toFixed(2);
+  };
+
+  return (
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between"
+        }}
+      >
+        <div style={{ display: "flex" }}>
+          <div
+            style={{
+              marginRight: 10,
+              borderRadius: 10,
+              overflow: "hidden",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: 100,
+              height: 100,
+              background: "gray"
+            }}
+          >
+            <img
+              src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+              alt=""
+              style={{
+                background: "lightgray"
+              }}
+            />
+          </div>
+
+          <h1 className="currentWeather">{weather.main}</h1>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <div className="mainTemp">{KtoC(main.temp)} ºC</div>
+          <div className="feelsLike">
+            Feels Like:{" "}
+            <span style={{ fontSize: 15 }}>{KtoC(main.feels_like)} ºC</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          style={{
+            fontSize: 18,
+            fontFamily: "Roboto",
+            color: "#525252",
+            marginTop: 20
+          }}
+        >
+          Wind Speed:
+        </div>
+        <div
+          style={{
+            fontSize: 22,
+            fontWeight: 600,
+            fontFamily: "Roboto",
+            color: "#2f99c3"
+          }}
+        >
+          {wind.speed} meter/second
+        </div>
+      </div>
+    </div>
+  );
+};
+???????????
+current weather icon,
+temperature,
+humidity,
+wind speed,
+It must display apt images for sunny/rainy/cloudy/snowy weather conditions. */
