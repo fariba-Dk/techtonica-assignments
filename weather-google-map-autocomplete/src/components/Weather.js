@@ -1,14 +1,13 @@
 import axios from 'axios';
-import "../index.css";
-import React, { useState, useEffect, ChangeEvent, useLoadScript } from 'react';
+import '../index.css';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 // import Icon from './components/Icon.js';
 import Temp from '../components/Temp';
 import Days from '../components/Days';
+import Icon from '../components/Icon';
 
-
-
-
-const MyURL = "http://api.openweathermap.org/data/2.5/forecast?lat=37.7749&lon=-122.4194&appid=0e94ff0e87c051d7531693a200fce67d&units=metric"
+const MyURL =
+  'http://api.openweathermap.org/data/2.5/forecast?lat=37.7749&lon=-122.4194&appid=0e94ff0e87c051d7531693a200fce67d&units=metric';
 //react-weather api key: 0e94ff0e87c051d7531693a200fce67d
 
 const dateBuilder = (d) => {
@@ -44,27 +43,26 @@ const dateBuilder = (d) => {
   return `${day} ${date} ${month} ${year}`;
 };
 const libraries = ['places'];
-export default function Weather({props}) {
+export default function Weather({ props }) {
   //ALL THE HOOKS
-  const { isLoaded, loadError } = useLoadScript({MyURL
-  ,
-    libraries,
-  });
+  // const { isLoaded, loadError } = useLoadScript({MyURL
+  // ,
+  //   libraries,
+  // });
   const [city, setCity] = useState('San Francisco');
   const [temp, setTemp] = useState(0);
   const [weather, setWeather] = useState('');
 
-  const [latitude, setLatitude] = useState(37.7749,);
+  const [latitude, setLatitude] = useState(37.7749);
   const [longitude, setLongitude] = useState(-122.4194);
   const [humidity, setHumidity] = useState(0);
-
 
   const savePositionToState = (position) => {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
   };
 
-/*import React, { useState, useEffect, ChangeEvent } from 'react';
+  /*import React, { useState, useEffect, ChangeEvent } from 'react';
 
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 const suffix = "&units=imperial&appid=12345";
@@ -96,7 +94,6 @@ setCity( event.target.value );
 }
  */
   async function fetchWeather() {
-
     try {
       //lets get our location:
       await window.navigator.geolocation.getCurrentPosition(
@@ -104,8 +101,9 @@ setCity( event.target.value );
       );
 
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=0e94ff0e87c051d7531693a200fce67d&units=metric`)
-        console.log(response)
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=0e94ff0e87c051d7531693a200fce67d&units=metric`
+      );
+      console.log(response);
 
       //get temp from response body
       setTemp(response.data.main.temp);
@@ -124,44 +122,43 @@ setCity( event.target.value );
   }, []);
 
   //------------- Return here
-  if (loadError) return 'Error';
-  if (!isLoaded) return 'Loading...';
+  // if (loadError) return 'Error';
+  // if (!isLoaded) return 'Loading...';
 
   return (
     <div>
-     <h1 className='weather-nav'>
-          🌞 Whats-Your-Temp ©<span role='img' aria-label='tent'></span>
-        </h1>
-      <div className="weatherCard">
-        <Days day={props.day}/>
-        <Icon icon={props.icon}/>
-        <Temp temp={props.temp}/>
-      <div>
+      <h1 className='weather-nav'>
+        🌞 Whats-Your-Temp ©<span role='img' aria-label='tent'></span>
+      </h1>
+      <div className='weatherCard'>
+        <Days days={props.days} />
+        <Icon icon={props.icon} />
+        <Temp temp={props.temp} />
+        <div></div>
+        <center>
+          <h2>Here is Your forecast for Today {dateBuilder(new Date())}</h2>
+          setCity( event.target.value );
+          <form value={city}>
+            <input
+              type='text'
+              placeholder='Enter city'
+              onChange={(e) => setTemp()}
+              onKeyPress={fetchWeather}
+            />
+            <button onKeyPress={fetchWeather} type='submit'>
+              Get Weather
+            </button>
+            <h2>City: {city}</h2>
+          </form>
+          <div>
+            <h2>City: {city}</h2>
+            <h2>Temperature: {temp}ºC</h2>
 
-
+            <h2>Humidity: {humidity}</h2>
+            <h2>Conditions: {weather}</h2>
+          </div>
+        </center>
       </div>
-      <center>
-        <h2>Here is Your forecast for Today {dateBuilder(new Date())}</h2>
-        setCity( event.target.value );
-
-
-    <form value={city}>
-        <input type="text" placeholder="Enter city" onChange={(e) => setTemp()}
-               onKeyPress={fetchWeather} />
-        <button onKeyPress={fetchWeather} type="submit">Get Weather</button>
-        <h2>City: {city}</h2>
-      </form>
-
-        <div>
-          <h2>City: {city}</h2>
-          <h2>Temperature: {temp}ºC</h2>
-
-          <h2>Humidity: {humidity}</h2>
-          <h2>Conditions: {weather}</h2>
-        </div>
-      </center>
-    </div>
-
     </div>
   );
 }

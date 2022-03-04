@@ -2,7 +2,8 @@ import React, { useState, useCallback } from 'react';
 import Weather from './components/Weather.js';
 import Pin from './components/Pin';
 import AutoComplete from 'places-autocomplete-react';
-import "./index.css"
+import "./index.css";
+import Icon from './components/Icon';
 
 
 export default function App() {
@@ -22,13 +23,13 @@ export default function App() {
     <>
       <div className="App">
         <div className="weatherContainer p3-3 pb-3">
-          <Weather day={'Mon'} temp={32}/>
-          <Weather day={'Tue'}  temp={33}/>
-          <Weather day={'Wed'} temp={32}/>
-          <Weather day={'Thu'} temp={35}/>
-          <Weather day={'Fri'} temp={15}/>
-          <Weather day={'Sat'} temp={30}/>
-          <Weather day={'Sun'} temp={34} />
+          <Weather day={'Mon'} icon={'Sun'} temp={32}/>
+          <Weather day={'Tue'} icon={'Mistake'} temp={33}/>
+          <Weather day={'Wed'} icon={'Snowing'} temp={32}/>
+          <Weather day={'Thu'} icon={'Rain'} temp={35}/>
+          <Weather day={'Fri'} icon={'Sun'} temp={15}/>
+          <Weather day={'Sat'} icon={'Cloud'} temp={30}/>
+          <Weather day={'Sun'} icon={'Partial'} temp={34} />
 
         </div>
 
