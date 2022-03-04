@@ -21,7 +21,7 @@ export default function App() {
   return (
     <>
       <div className="App">
-        <div className="weatherContainer p3-3 pb-3">
+        {/* <div className="weatherContainer p3-3 pb-3">
           <Weather day={'Mon'} icon={'Sun'} temp={32}/>
           <Weather day={'Tue'} icon={'Mistake'} temp={33}/>
           <Weather day={'Wed'} icon={'Snowing'} temp={32}/>
@@ -30,7 +30,7 @@ export default function App() {
           <Weather day={'Sat'} icon={'Cloud'} temp={30}/>
           <Weather day={'Sun'} icon={'Partial'} temp={34} />
 
-        </div>
+        </div> */}
 
         <Weather className="weather"/>
       </div>

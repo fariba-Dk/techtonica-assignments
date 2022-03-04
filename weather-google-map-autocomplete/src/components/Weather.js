@@ -41,13 +41,13 @@ const dateBuilder = (d) => {
   return `${day} ${date} ${month} ${year}`;
 };
 const libraries = ['places'];
-export default function Weather(props) {
+export default function Weather() {
   //ALL THE HOOKS
   // const { isLoaded, loadError } = useLoadScript({MyURL
   // ,
   //   libraries,
   // });
-  const [city, setCity] = useState('San Francisco');
+  const [city, setCity] = useState('');
   const [temp, setTemp] = useState(0);
   const [weather, setWeather] = useState('');
 
@@ -91,7 +91,7 @@ setCity( event.target.value );
   );
 }
  */
-  async function fetchWeather() {
+  async function fetchWeather(lat, lon) {
     try {
       //lets get our location:
       await window.navigator.geolocation.getCurrentPosition(
@@ -99,12 +99,11 @@ setCity( event.target.value );
       );
 
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=0e94ff0e87c051d7531693a200fce67d&units=metric`
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=0e94ff0e87c051d7531693a200fce67d&units=metric`
       );
 
       //get temp from response body
       setTemp(response.data.main.temp);
-      console.log(response.data);
       //get city from data
       setCity(response.data.name);
       setWeather(response.data.weather[0].main);
@@ -113,10 +112,21 @@ setCity( event.target.value );
       console.error(error);
     }
   }
+
+  async function fetchWeatherByCity() {
+    const response = await axios.get(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=0e94ff0e87c051d7531693a200fce67d`
+    );
+    const { main, weather } = response.data.list[0];
+    const { humidity, temp } = main;
+    setTemp(temp);
+    setHumidity(humidity);
+    setWeather(weather[0].description);
+  }
   //useEf runs only once
-  useEffect(() => {
-    fetchWeather(city);
-  }, []);
+//   useEffect(() => {
+//     fetchWeather(city);
+//   }, []);
 
   //------------- Return here
   // if (loadError) return 'Error';
@@ -128,23 +138,20 @@ setCity( event.target.value );
         🌞 Whats-Your-Temp ©<span role='img' aria-label='tent'></span>
       </h1>
       <div className='weatherCard'>
-        <Days days={props.day} />
-        <Temp temp={props.temp} />
+        {/* <Days days={props.day} /> */}
+        <Temp temp={temp} />
         <center>
           <h2>Here is Your forecast for Today {dateBuilder(new Date())}</h2>
-          setCity( event.target.value );
-          <form value={city}>
             <input
               type='text'
               placeholder='Enter city'
-              onChange={(e) => setTemp()}
-              onKeyPress={fetchWeather}
+              value={city}
+              onChange={(evt) => setCity(evt.target.value)}
             />
-            <button onKeyPress={fetchWeather} type='submit'>
+            <button onClick={fetchWeatherByCity} disabled={!city}>
               Get Weather
             </button>
             <h2>City: {city}</h2>
-          </form>
           <div>
             <h2>City: {city}</h2>
             <h2>Temperature: {temp}ºC</h2>
