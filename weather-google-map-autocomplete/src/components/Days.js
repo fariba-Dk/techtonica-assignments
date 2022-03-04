@@ -3,6 +3,6 @@ import "../index.css";
 
 export default function Days(props){
   return (
-    <div className="Days">{props.day}</div>
+    <div className="Days">{props.days}</div>
   )
 }

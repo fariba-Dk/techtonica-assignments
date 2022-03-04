@@ -1,10 +1,8 @@
 import axios from 'axios';
 import '../index.css';
 import React, { useState, useEffect, ChangeEvent } from 'react';
-// import Icon from './components/Icon.js';
 import Temp from '../components/Temp';
 import Days from '../components/Days';
-import Icon from '../components/Icon';
 
 const MyURL =
   'http://api.openweathermap.org/data/2.5/forecast?lat=37.7749&lon=-122.4194&appid=0e94ff0e87c051d7531693a200fce67d&units=metric';
@@ -130,10 +128,8 @@ setCity( event.target.value );
         🌞 Whats-Your-Temp ©<span role='img' aria-label='tent'></span>
       </h1>
       <div className='weatherCard'>
-        <Days days={props.days} />
-        <Icon icon={props.icon} />
+        <Days days={props.day} />
         <Temp temp={props.temp} />
-        <div></div>
         <center>
           <h2>Here is Your forecast for Today {dateBuilder(new Date())}</h2>
           setCity( event.target.value );

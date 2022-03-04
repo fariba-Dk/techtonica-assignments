@@ -3,7 +3,6 @@ import Weather from './components/Weather.js';
 import Pin from './components/Pin';
 import AutoComplete from 'places-autocomplete-react';
 import "./index.css";
-import Icon from './components/Icon';
 
 
 export default function App() {
