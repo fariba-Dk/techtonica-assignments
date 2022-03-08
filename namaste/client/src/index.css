@@ -1,0 +1,46 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.textHeader {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: pink;
+  color: blue;
+  font-size: 55px;
+}
+
+.ListMain .header input {
+  padding: 40px;
+  font-size: 40px;
+  border: 2px solid #c38d94;
+  width: 50%;
+}
+
+.ListMain .header button {
+  padding: 10px;
+  font-size: 36px;
+  margin: 10px;
+  margin-right: 0px;
+  background-color: red;
+  color:green;
+  border: 5px solid green;
+}
+
+
+
+.singleitem {
+  color: green;
+  background-color: lightblue;
+  padding: 45px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  list-style: none;
+}
