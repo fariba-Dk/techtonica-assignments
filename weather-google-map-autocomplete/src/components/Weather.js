@@ -1,14 +1,10 @@
 import axios from 'axios';
 import '../index.css';
 import React, { useState, useEffect, ChangeEvent } from 'react';
+import WeatherCard from '../components/WeatherCard';
 // import Icon from './components/Icon.js';
 import Temp from '../components/Temp';
 import Days from '../components/Days';
-import Icon from '../components/Icon';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 
 const MyURL =
   'http://api.openweathermap.org/data/2.5/forecast?lat=37.7749&lon=-122.4194&appid=0e94ff0e87c051d7531693a200fce67d&units=metric';
@@ -47,56 +43,27 @@ const dateBuilder = (d) => {
   return `${day} ${date} ${month} ${year}`;
 };
 const libraries = ['places'];
+
 export default function Weather(props) {
   //ALL THE HOOKS
   // const { isLoaded, loadError } = useLoadScript({MyURL
   // ,
   //   libraries,
   // });
-  const [city, setCity] = useState('San Francisco');
-  const [temp, setTemp] = useState(0);
-  const [weather, setWeather] = useState('');
+  const [data, setData] = useState();
+  //   const [city, setCity] = useState('San Francisco');
+  //   const [temp, setTemp] = useState(0);
+  //   const [weather, setWeather] = useState('');
 
   const [latitude, setLatitude] = useState(37.7749);
   const [longitude, setLongitude] = useState(-122.4194);
-  const [humidity, setHumidity] = useState(0);
+  //   const [humidity, setHumidity] = useState(0);
 
   const savePositionToState = (position) => {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
   };
 
-  /*import React, { useState, useEffect, ChangeEvent } from 'react';
-
-const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
-const suffix = "&units=imperial&appid=12345";
-
-const App: React.FC = () => {
- const [city, setCity] = useState('London');
- const getWeather = async (city: string) => {
-      const response = await fetch(baseUrl + city + suffix);
-      const jsonWeather = await response.json();
-      console.log(jsonWeather);
-  }
-
-  useEffect( { () => getWeather(city) }, []);  // this line has an issue
-
- const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setCity( event.target.value );
-}
-setCity( event.target.value );
-  return (
-    <div>
-      <form>
-        <input type="text" placeholder="Enter city"
-               onInput = {handleChange} />
-        <button type="submit">Get Weather</button>
-        <h2>City: {city}</h2>
-      </form>
-    </div>
-  );
-}
- */
   async function fetchWeather(latitude, longitude) {
     try {
       //lets get our location:
@@ -109,17 +76,14 @@ setCity( event.target.value );
       );
       console.log(response);
 
-      //get temp from response body
-      setTemp(response.data.list[0].main.temp);
-      console.log(response.data);
-      //get city from data
-      setCity(response.data.city.name);
-      setWeather(response.data.list[0].weather[0].description);
-      setHumidity(response.data.list[0].main.humidity);
+      setData(response.data);
     } catch (error) {
       console.error(error);
     }
   }
+  //either make card for the = break it down to smaller comp, that more reusable
+  //hard coding [0] and as a result im on the first element
+  //create a prop val const dayCount(porp) provide it in app
   //useEf runs only once
   const { markers } = props;
   useEffect(() => {
@@ -129,18 +93,30 @@ setCity( event.target.value );
   //------------- Return here
   // if (loadError) return 'Error';
   // if (!isLoaded) return 'Loading...';
+  if(!data)return (<div>Loading...</div>)
 
   return (
     <div>
-      <h1 className='weather-nav'>
-        🌞 Whats-Your-Temp ©<span role='img' aria-label='tent'></span>
-      </h1>
       <div className='weatherCard'>
         <Days days={props.days} />
-        <Icon icon={props.icon} />
+        {/* <Icon icon={props.icon} /> */}
         <Temp temp={props.temp} />
-        <div></div>
-        <center>
+        <div>
+          <form value={data.city}>
+            <input
+              type='text'
+              placeholder='Enter city'
+              //   onChange={(e) => setTemp()}
+              onKeyPress={fetchWeather}
+            />
+            <button onKeyPress={fetchWeather} type='submit'>
+              Get Weather
+            </button>
+            <h2>City: {data.city}</h2>
+          </form>
+        </div>
+        {/* <WeatherCard data={data} dayNum={0} /> */}
+        {/* <center>
           <h2>Here is Your forecast for Today {dateBuilder(new Date())}</h2>
           setCity( event.target.value );
           <form value={city}>
@@ -165,7 +141,7 @@ setCity( event.target.value );
             <h2>Humidity: {humidity}</h2>
             <h2>Conditions: {weather}</h2>
           </div>
-        </center>
+        </center> */}
       </div>
     </div>
   );
